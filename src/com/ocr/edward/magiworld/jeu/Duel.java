@@ -16,29 +16,48 @@ public class Duel {
 
     public void start(Scanner scan) {
         // Presentation des persos
-        System.out.println(joueurs[0].presentation());
+        Personnage joueur1 = joueurs[0];
+        Personnage joueur2 = joueurs[1];
+
+
+        System.out.println(joueur1.presentation());
         System.out.println("Versus");
-        System.out.println(joueurs[1].presentation());
+        System.out.println(joueur2.presentation());
         // Round de combat -- tant les perso sont vivants
-        // recuperer l'action joueur 1
-        int actionDemandeeJ1 = actionDemandee(scan, 0);
-        // jouer action demandee joueur 1
-        jouerAction(actionDemandeeJ1, 0, 1);
-        // recuperer l'action joueur 2
-        int actionDemandeeJ2 = actionDemandee(scan, 1);
-        // jouer action demandee joueur 2
-        jouerAction(actionDemandeeJ2, 1, 0);
-        // fin de round ; on affiche l'etat des perso.
-        System.out.println("Joueur 1 : " + joueurs[0].toString());
-        System.out.println("Joueur 2 : " + joueurs[1].toString());
+        int roundCounter = 1;
+        while (joueur1.isAlive() && joueur2.isAlive()) {
+            System.out.println("Debut du round " + roundCounter);
+            play(scan, joueur1, joueur2);
+            play(scan, joueur2, joueur1);
+            // fin de round ; on affiche l'etat des perso.
+            System.out.println("Debut du round " + roundCounter);
+            System.out.println("Joueur 1 : " + joueurs[0].toString());
+            System.out.println("Joueur 2 : " + joueurs[1].toString());
+            roundCounter++;
+        }
+        if (joueur1.isAlive()) {
+            System.out.println(joueur2.getName() + " a perdu");
+        }
+        if (joueur2.isAlive()) {
+            System.out.println(joueur1.getName() + " a perdu");
+        }
+
 
 
     }
 
-    private void jouerAction(int actionDemandee, int joueurIndex, int opponentIndex) {
-        Personnage currentPlayer = joueurs[joueurIndex];
-        Personnage currentOpponnent = joueurs[opponentIndex];
-        System.out.print(" Joueur " + (joueurIndex + 1) + "utilise ");
+    private void play(Scanner scan, Personnage currentPlayer, Personnage currentOpponnent) {
+        // si le joueur est encore vivant
+        if (currentPlayer.isAlive()) {
+            // recuperer l'action joueur
+            int actionDemandeeJ1 = actionDemandee(scan, currentPlayer);
+            // jouer action demandee joueur
+            jouerAction(actionDemandeeJ1, currentPlayer, currentOpponnent);
+        }
+    }
+
+    private void jouerAction(int actionDemandee, Personnage currentPlayer, Personnage currentOpponnent) {
+
         if (actionDemandee == 1) {
             currentPlayer.attaqueSimple(currentOpponnent);
         }
@@ -48,10 +67,11 @@ public class Duel {
 
     }
 
-    public int actionDemandee(Scanner scan, int joueurIndex) {
+    public int actionDemandee(Scanner scan, Personnage currentPlayer) {
         int action = -1;
-        Personnage currentPlayer = joueurs[joueurIndex];
-        System.out.println("Tour du joueur " + (joueurIndex + 1));
+
+        System.out.println("==============================================================");
+        System.out.println("Tour du joueur " + currentPlayer.getName());
         System.out.println("Niveau de vie :" + currentPlayer.getLife());
         while (action == -1) {
             System.out.println("----------------------------ACTION-------");

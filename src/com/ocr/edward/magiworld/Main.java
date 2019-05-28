@@ -39,7 +39,7 @@ public class Main {
 
     private static Personnage createJoueurFromSaisie(int numeroJoueur) {
         System.out.println("Creation du personnage Joueur " + numeroJoueur);
-
+        String name = "Joueur " + numeroJoueur;
         // Joueur 1
         boolean saisieOK = true;
         int classe, level, force, dex, inte = 0;
@@ -60,13 +60,13 @@ public class Main {
         Personnage joueur = null;
         switch (classe) {
             case 1:
-                joueur = new Warrior(level, force, dex, inte);
+                joueur = new Warrior(name, level, force, dex, inte);
                 break;
             case 2:
-                joueur = new Rogue(level, force, dex, inte);
+                joueur = new Rogue(name, level, force, dex, inte);
                 break;
             case 3:
-                joueur = new Magus(level, force, dex, inte);
+                joueur = new Magus(name, level, force, dex, inte);
                 break;
 
         }

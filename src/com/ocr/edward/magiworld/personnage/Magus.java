@@ -4,8 +4,8 @@ public class Magus extends Personnage {
 
     public static String img = "Abracadabra !!!!!!!";
 
-    public Magus(int level, int strength, int dexterity, int intelligence) {
-        super(level, strength, dexterity, intelligence);
+    public Magus(String name, int level, int strength, int dexterity, int intelligence) {
+        super(name, level, strength, dexterity, intelligence);
     }
 
 
@@ -26,8 +26,8 @@ public class Magus extends Personnage {
     @Override
     public void attaqueSimple(Personnage opponent) {
         double degats = getIntelligence();
-        System.out.println("Boule de feu et inflige " + degats + " degats");
-        opponent.setLife(getLife() - degats);
+        System.out.println(name + " utilise Boule de feu et inflige " + degats + " degats");
+        opponent.setLife(opponent.getLife() - degats);
 
     }
 
@@ -36,12 +36,16 @@ public class Magus extends Personnage {
         double soin = getIntelligence() * 2;
         double currentLife = getLife();
         double maxLife = getLevel() * 5;
+        double newLife = 0;
         if ((currentLife + soin) >= maxLife) {
-            setLife(maxLife);
+            newLife = maxLife;
         } else {
-            setLife(currentLife + soin);
+            newLife = currentLife + soin;
         }
-        System.out.println("Soin et sa vie remonte a :" + getLife());
+
+        System.out.println(name + " utilise Soin et sa vie remonte a :" + newLife);
+        setLife(newLife);
+
 
     }
 }

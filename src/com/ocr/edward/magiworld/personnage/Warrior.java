@@ -4,8 +4,8 @@ public class Warrior extends Personnage {
 
     public static String img = "WOOOOOOOOOOOOOOOOO";
 
-    public Warrior(int level, int strength, int dexterity, int intelligence) {
-        super(level, strength, dexterity, intelligence);
+    public Warrior(String name, int level, int strength, int dexterity, int intelligence) {
+        super(name, level, strength, dexterity, intelligence);
     }
 
     @Override
@@ -27,18 +27,20 @@ public class Warrior extends Personnage {
     @Override
     public void attaqueSimple(Personnage opponent) {
         double degats = getStrength();
-        System.out.println("Coup d' epee et inflige " + degats + " degats");
-        opponent.setLife(getLife() - degats);
+        System.out.println(name + " utilise Coup d' epee et inflige " + degats + " degats");
+        opponent.setLife(opponent.getLife() - degats);
 
     }
 
     @Override
     public void attaqueSpeciale(Personnage opponent) {
         double degats = getStrength() * 2;
-        double diminutionDeForce = getStrength() / 2;
-        setStrength(diminutionDeForce);
-        System.out.println("Coup de Rage et inflige " + degats + " degats mais sa force devient " + diminutionDeForce);
-        opponent.setLife(getLife() - degats);
+        double diminutionDeVie = getStrength() / 2;
+
+        System.out.println(name + " utilise Coup de Rage et inflige " + degats + " degats mais sa vie diminue de " + diminutionDeVie);
+        opponent.setLife(opponent.getLife() - degats);
+        setLife(getLife() - diminutionDeVie);
+
 
     }
 

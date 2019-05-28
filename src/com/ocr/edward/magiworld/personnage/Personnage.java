@@ -7,8 +7,10 @@ public abstract class Personnage {
     protected double strength;
     protected double dexterity;
     protected double intelligence;
+    protected String name;
 
-    public Personnage(int level, double strength, double dexterity, double intelligence) {
+    public Personnage(String name, int level, double strength, double dexterity, double intelligence) {
+        this.name = name;
         this.level = level;
         this.life = level * 5;
         this.strength = strength;
@@ -24,6 +26,10 @@ public abstract class Personnage {
         boolean goodInt = (intelligence >= 0 && intelligence <= 100);
 
         return goodLevelCoherence && goodLevel && goodStrength && goodDex && goodInt;
+    }
+
+    public boolean isAlive() {
+        return this.life > 0;
     }
 
     public abstract String presentation();
@@ -55,8 +61,14 @@ public abstract class Personnage {
         return life;
     }
 
-    public void setLife(double life) {
-        this.life = life;
+    public void setLife(double newlife) {
+        String action = "perd";
+        if (newlife > this.life) {
+            action = "gagne";
+        }
+        double abs = Math.abs(newlife - this.life);
+        System.out.println(name + " " + action + " " + abs + " points de vie");
+        this.life = newlife;
     }
 
     public double getStrength() {
@@ -81,5 +93,13 @@ public abstract class Personnage {
 
     public void setIntelligence(double intelligence) {
         this.intelligence = intelligence;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
