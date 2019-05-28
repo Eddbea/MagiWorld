@@ -60,11 +60,15 @@ public class Duel {
 
             if (scan.hasNextInt()) {
                 action = scan.nextInt();
+                if (action < 0 || action > 2) {
+                    System.out.println("Erreur de saisie : action entre 1 et 2");
+                    action = -1;
+                }
+            } else {
+                scan.next();
+                System.out.println("Erreur de saisie : entier uniquement");
             }
         }
-
         return action;
-
-
     }
 }

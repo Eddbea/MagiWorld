@@ -26,7 +26,7 @@ public class Warrior extends Personnage {
 
     @Override
     public void attaqueSimple(Personnage opponent) {
-        int degats = getStrength();
+        double degats = getStrength();
         System.out.println("Coup d' epee et inflige " + degats + " degats");
         opponent.setLife(getLife() - degats);
 
@@ -34,8 +34,8 @@ public class Warrior extends Personnage {
 
     @Override
     public void attaqueSpeciale(Personnage opponent) {
-        int degats = getStrength() * 2;
-        int diminutionDeForce = getStrength() / 2;
+        double degats = getStrength() * 2;
+        double diminutionDeForce = getStrength() / 2;
         setStrength(diminutionDeForce);
         System.out.println("Coup de Rage et inflige " + degats + " degats mais sa force devient " + diminutionDeForce);
         opponent.setLife(getLife() - degats);

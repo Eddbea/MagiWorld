@@ -21,7 +21,7 @@ public class Rogue extends Personnage {
 
     @Override
     public void attaqueSimple(Personnage opponent) {
-        int degats = getDexterity();
+        double degats = getDexterity();
         System.out.println("Tir a l'arc et inflige " + degats + " degats");
         opponent.setLife(getLife() - degats);
 
@@ -29,8 +29,7 @@ public class Rogue extends Personnage {
 
     @Override
     public void attaqueSpeciale(Personnage opponent) {
-        int degats = 0;
-        int augmentationDex = (getLevel() / 2);
+        double augmentationDex = (getLevel() / 2);
         System.out.println("Concentration et sa dexterite augmente de " + augmentationDex);
         setDexterity(augmentationDex + getDexterity());
     }
