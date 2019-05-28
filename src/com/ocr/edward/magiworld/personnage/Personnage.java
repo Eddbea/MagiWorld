@@ -23,6 +23,10 @@ public abstract class Personnage {
 
     public abstract String presentation();
 
+    public abstract void attaqueSimple(Personnage opponent);
+
+    public abstract void attaqueSpeciale(Personnage opponent);
+
     @Override
     public String toString() {
         return "{" +
@@ -32,5 +36,45 @@ public abstract class Personnage {
                 ", dexterity=" + dexterity +
                 ", intelligence=" + intelligence +
                 '}';
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    public int getLife() {
+        return life;
+    }
+
+    public void setLife(int life) {
+        this.life = life;
+    }
+
+    public int getStrength() {
+        return strength;
+    }
+
+    public void setStrength(int strength) {
+        this.strength = strength;
+    }
+
+    public int getDexterity() {
+        return dexterity;
+    }
+
+    public void setDexterity(int dexterity) {
+        this.dexterity = dexterity;
+    }
+
+    public int getIntelligence() {
+        return intelligence;
+    }
+
+    public void setIntelligence(int intelligence) {
+        this.intelligence = intelligence;
     }
 }

@@ -8,6 +8,7 @@ public class Magus extends Personnage {
         super(level, strength, dexterity, intelligence);
     }
 
+
     @Override
     public String presentation() {
         StringBuffer buff = new StringBuffer();
@@ -15,5 +16,15 @@ public class Magus extends Personnage {
                 .append("je suis un Mage \n")
                 .append(this.toString());
         return buff.toString();
+    }
+
+    @Override
+    public void attaqueSimple(Personnage opponent) {
+
+    }
+
+    @Override
+    public void attaqueSpeciale(Personnage opponent) {
+
     }
 }
