@@ -1,8 +1,8 @@
 package com.ocr.edward.magiworld.personnage;
 
-public class Rogue extends Personnage {
+public class Prowler extends Character {
 
-    public Rogue(String name, int level, int strength, int dexterity, int intelligence) {
+    public Prowler(String name, int level, int strength, int dexterity, int intelligence) {
         super(name, level, strength, dexterity, intelligence);
     }
 
@@ -20,7 +20,7 @@ public class Rogue extends Personnage {
     */
 
     @Override
-    public void attaqueSimple(Personnage opponent) {
+    public void attaqueSimple(Character opponent) {
         double degats = getDexterity();
         System.out.println(name + " utilise Tir a l'arc et inflige " + degats + " degats");
         opponent.setLife(opponent.getLife() - degats);
@@ -28,19 +28,17 @@ public class Rogue extends Personnage {
     }
 
     @Override
-    public void attaqueSpeciale(Personnage opponent) {
+    public void attaqueSpeciale(Character opponent) {
         double augmentationDex = (getLevel() / 2);
         System.out.println(name + " utilise Concentration et sa dexterite augmente de " + augmentationDex);
         setDexterity(augmentationDex + getDexterity());
     }
 
     public static String img = String.join("\n",
-            "             _   _     _       __ ",
-            "            | | | |   (_)     / _|",
-            "            | |_| |__  _  ___| |_ ",
-            "            | __| '_ \\| |/ _ \\  _|",
-            "            | |_| | | | |  __/ |",
-            "             \\__|_| |_|_|\\___|_|");
-
+            "                              |''||''| '||               '||'''|,                          '||`  ",
+            "                                  ||     ||                ||   ||                           ||   ",
+            "                                  ||     ||''|, .|''|,     ||...|' '||''| .|''|, '\\    //`  ||  .|''|, '||''| ",
+            "                                  ||     ||  || ||..||     ||       ||    ||  ||   \\\\//    ||  ||..||  ||    ",
+            "                                 .||.   .||  || `|...     .||      .||.   `|..|'    \\\\    .||. `|...  .||.   ");
 
 }

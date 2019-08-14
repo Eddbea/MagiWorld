@@ -1,28 +1,29 @@
 package com.ocr.edward.magiworld.jeu;
 
-import com.ocr.edward.magiworld.personnage.Personnage;
+import com.ocr.edward.magiworld.personnage.Character;
 
 import java.util.Scanner;
 
 public class Duel {
 
-    Personnage[] joueurs = new Personnage[2];
+    Character[] joueurs = new Character[2];
 
 
-    public Duel(Personnage joueur1, Personnage joueur2) {
+    public Duel(Character joueur1, Character joueur2) {
         this.joueurs[0] = joueur1;
         this.joueurs[1] = joueur2;
     }
 
     public void start(Scanner scan) {
         // Presentation des persos
-        Personnage joueur1 = joueurs[0];
-        Personnage joueur2 = joueurs[1];
+        Character joueur1 = joueurs[0];
+        Character joueur2 = joueurs[1];
 
 
         System.out.println(joueur1.presentation());
         System.out.println("Versus");
         System.out.println(joueur2.presentation());
+
         // Round de combat -- tant les perso sont vivants
         int roundCounter = 1;
         while (joueur1.isAlive() && joueur2.isAlive()) {
@@ -46,7 +47,7 @@ public class Duel {
 
     }
 
-    private void play(Scanner scan, Personnage currentPlayer, Personnage currentOpponnent) {
+    private void play(Scanner scan, Character currentPlayer, Character currentOpponnent) {
         // si le joueur est encore vivant
         if (currentPlayer.isAlive()) {
             // recuperer l'action joueur
@@ -56,7 +57,7 @@ public class Duel {
         }
     }
 
-    private void jouerAction(int actionDemandee, Personnage currentPlayer, Personnage currentOpponnent) {
+    private void jouerAction(int actionDemandee, Character currentPlayer, Character currentOpponnent) {
 
         if (actionDemandee == 1) {
             currentPlayer.attaqueSimple(currentOpponnent);
@@ -67,7 +68,7 @@ public class Duel {
 
     }
 
-    public int actionDemandee(Scanner scan, Personnage currentPlayer) {
+    public int actionDemandee(Scanner scan, Character currentPlayer) {
         int action = -1;
 
         System.out.println("==============================================================");

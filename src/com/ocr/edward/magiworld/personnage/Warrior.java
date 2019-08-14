@@ -1,6 +1,6 @@
 package com.ocr.edward.magiworld.personnage;
 
-public class Warrior extends Personnage {
+public class Warrior extends Character {
 
     public static String img = "WOOOOOOOOOOOOOOOOO";
 
@@ -25,7 +25,7 @@ public class Warrior extends Personnage {
      */
 
     @Override
-    public void attaqueSimple(Personnage opponent) {
+    public void attaqueSimple(Character opponent) {
         double degats = getStrength();
         System.out.println(name + " utilise Coup d' epee et inflige " + degats + " degats");
         opponent.setLife(opponent.getLife() - degats);
@@ -33,15 +33,13 @@ public class Warrior extends Personnage {
     }
 
     @Override
-    public void attaqueSpeciale(Personnage opponent) {
+    public void attaqueSpeciale(Character opponent) {
         double degats = getStrength() * 2;
         double diminutionDeVie = getStrength() / 2;
 
         System.out.println(name + " utilise Coup de Rage et inflige " + degats + " degats mais sa vie diminue de " + diminutionDeVie);
         opponent.setLife(opponent.getLife() - degats);
         setLife(getLife() - diminutionDeVie);
-
-
     }
 
 }

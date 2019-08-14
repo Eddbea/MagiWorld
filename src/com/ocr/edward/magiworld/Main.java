@@ -2,8 +2,8 @@ package com.ocr.edward.magiworld;
 
 import com.ocr.edward.magiworld.jeu.Duel;
 import com.ocr.edward.magiworld.personnage.Magus;
-import com.ocr.edward.magiworld.personnage.Personnage;
-import com.ocr.edward.magiworld.personnage.Rogue;
+import com.ocr.edward.magiworld.personnage.Character;
+import com.ocr.edward.magiworld.personnage.Prowler;
 import com.ocr.edward.magiworld.personnage.Warrior;
 
 import java.util.Scanner;
@@ -24,12 +24,12 @@ public class Main {
             "----------------------------------------------------------------------------------------");
 
     public static void main(String[] args) {
-        // write your code here
-        // phase 1 : creqtion des personnages
+
+        // phase 1 : creation des personnages
         System.out.println("Bienvenue sur Magiworld");
         System.out.println(rulesCreation);
-        Personnage joueur1 = createJoueurFromSaisie(1);
-        Personnage joueur2 = createJoueurFromSaisie(2);
+        Character joueur1 = createJoueurFromSaisie(1);
+        Character joueur2 = createJoueurFromSaisie(2);
 
         // phase 2 : creation du jeu
         Duel jeu = new Duel(joueur1, joueur2);
@@ -37,36 +37,37 @@ public class Main {
         // fin du bal on remballe
     }
 
-    private static Personnage createJoueurFromSaisie(int numeroJoueur) {
+    private static Character createJoueurFromSaisie(int numeroJoueur) {
         System.out.println("Creation du personnage Joueur " + numeroJoueur);
         String name = "Joueur " + numeroJoueur;
+
         // Joueur 1
         boolean saisieOK = true;
-        int classe, level, force, dex, inte = 0;
+        int classe, level, strength, dexterity, intellect = 0;
 
         do {
-            classe = saisieClassePersonnage("Veuillez choisir la classe du personnage (1: Guerrier, 2: Voleur, 3: Mage)", scan);
+            classe = saisieClassePersonnage("Veuillez choisir la classe du personnage (1: Guerrier, 2: Rodeur, 3: Mage)", scan);
             level = saisiePersonnage("Niveau du personnage Joueur " + numeroJoueur + " ?", scan);
-            force = saisiePersonnage("Force du personnage Joueur " + numeroJoueur + " ?", scan);
-            dex = saisiePersonnage("Dexterite du personnage Joueur " + numeroJoueur + " ?", scan);
-            inte = saisiePersonnage("intelligence du personnage Joueur " + numeroJoueur + " ?", scan);
+            strength = saisiePersonnage("Force du personnage Joueur " + numeroJoueur + " ?", scan);
+            dexterity = saisiePersonnage("Dexterite du personnage Joueur " + numeroJoueur + " ?", scan);
+            intellect = saisiePersonnage("intelligence du personnage Joueur " + numeroJoueur + " ?", scan);
 
-            saisieOK = Personnage.checkBeforeCreate(level, force, dex, inte);
+            saisieOK = Character.checkBeforeCreate(level, strength, dexterity, intellect);
             if (!saisieOK)
                 System.out.println("Erreur de saisie : rappel des regles");
             System.out.println(rulesCreation);
         } while (!saisieOK);
 
-        Personnage joueur = null;
+        Character joueur = null;
         switch (classe) {
             case 1:
-                joueur = new Warrior(name, level, force, dex, inte);
+                joueur = new Warrior(name, level, strength, dexterity, intellect);
                 break;
             case 2:
-                joueur = new Rogue(name, level, force, dex, inte);
+                joueur = new Prowler(name, level, strength, dexterity, intellect);
                 break;
             case 3:
-                joueur = new Magus(name, level, force, dex, inte);
+                joueur = new Magus(name, level, strength, dexterity, intellect);
                 break;
 
         }

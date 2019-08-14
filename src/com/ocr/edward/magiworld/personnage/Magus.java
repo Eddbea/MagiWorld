@@ -1,6 +1,6 @@
 package com.ocr.edward.magiworld.personnage;
 
-public class Magus extends Personnage {
+public class Magus extends Character {
 
     public static String img = "Abracadabra !!!!!!!";
 
@@ -24,7 +24,7 @@ public class Magus extends Personnage {
         Attention, il ne peut pas avoir plus de vie qu’il n’en avait au départ.
      */
     @Override
-    public void attaqueSimple(Personnage opponent) {
+    public void attaqueSimple(Character opponent) {
         double degats = getIntelligence();
         System.out.println(name + " utilise Boule de feu et inflige " + degats + " degats");
         opponent.setLife(opponent.getLife() - degats);
@@ -32,7 +32,7 @@ public class Magus extends Personnage {
     }
 
     @Override
-    public void attaqueSpeciale(Personnage opponent) {
+    public void attaqueSpeciale(Character opponent) {
         double soin = getIntelligence() * 2;
         double currentLife = getLife();
         double maxLife = getLevel() * 5;

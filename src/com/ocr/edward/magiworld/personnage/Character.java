@@ -1,6 +1,6 @@
 package com.ocr.edward.magiworld.personnage;
 
-public abstract class Personnage {
+public abstract class Character {
 
     protected int level;
     protected double life;
@@ -9,7 +9,7 @@ public abstract class Personnage {
     protected double intelligence;
     protected String name;
 
-    public Personnage(String name, int level, double strength, double dexterity, double intelligence) {
+    public Character(String name, int level, double strength, double dexterity, double intelligence) {
         this.name = name;
         this.level = level;
         this.life = level * 5;
@@ -34,9 +34,9 @@ public abstract class Personnage {
 
     public abstract String presentation();
 
-    public abstract void attaqueSimple(Personnage opponent);
+    public abstract void attaqueSimple(Character opponent);
 
-    public abstract void attaqueSpeciale(Personnage opponent);
+    public abstract void attaqueSpeciale(Character opponent);
 
     @Override
     public String toString() {
