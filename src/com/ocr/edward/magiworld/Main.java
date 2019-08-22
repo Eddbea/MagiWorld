@@ -40,10 +40,9 @@ public class Main {
 
 
     /**
-     * Creation des joueurs et choix de leur classe
-     *
-     * @param numeroJoueur Attribution de numero de chaque joeur (1 et 2)
-     * @return joueur Renvoi la classe du joueur choisi
+     * Creation des joueurs et controle de bonne saisie
+     * @param numeroJoueur Attribution de numero de chaque joueur (1 et 2)
+     * @return joueur Renvoi le joueur choisi
      */
     private static Character createJoueurFromSaisie(int numeroJoueur) {
         System.out.println("Creation du personnage Joueur " + numeroJoueur);
@@ -77,11 +76,17 @@ public class Main {
             case 3:
                 joueur = new Magus(name, level, strength, dexterity, intellect);
                 break;
-
         }
         return joueur;
     }
 
+    /**
+     * Controle de saisie correct d'un entier superieur a 0 pour le choix du personnage
+     *
+     * @param label choix de la classe
+     * @param scan  recuperation de la saisie
+     * @return saisie
+     */
     private static int saisiePersonnage(String label, Scanner scan) {
         int retour = -1;
         while (retour == -1) {
@@ -89,6 +94,7 @@ public class Main {
 
             if (scan.hasNextInt()) {
                 retour = scan.nextInt();
+                
             } else {
                 scan.next();
                 System.out.println("Erreur de saisie : entier uniquement");
@@ -98,6 +104,12 @@ public class Main {
 
     }
 
+    /**
+     * Controle de saisie correct d'un entier superieur a 0 et compris entre 1 et 3 pour le choix du personnage
+     * @param label choix de la classe
+     * @param scan recuperation de la saisie
+     * @return choix de la classe
+     */
     private static int saisieClassePersonnage(String label, Scanner scan) {
         int retour = -1;
         while (retour == -1) {

@@ -18,6 +18,13 @@ public abstract class Character {
         this.intelligence = intelligence;
     }
 
+    /**
+     * @param level
+     * @param strength
+     * @param dexterity
+     * @param intelligence
+     * @return Un controle de la bonne saisie des parametres du joueur selon les regles du jeu.
+     */
     public static boolean checkBeforeCreate(int level, double strength, double dexterity, double intelligence) {
         boolean goodLevelCoherence = (level == strength + dexterity + intelligence);
         boolean goodLevel = (level >= 1 && level <= 100);

@@ -68,6 +68,11 @@ public class Duel {
 
     }
 
+    /**
+     * @param scan
+     * @param currentPlayer
+     * @return
+     */
     public int actionDemandee(Scanner scan, Character currentPlayer) {
         int action = -1;
 
