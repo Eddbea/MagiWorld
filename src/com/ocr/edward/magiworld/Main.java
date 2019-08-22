@@ -10,8 +10,10 @@ import java.util.Scanner;
 
 public class Main {
 
+    //Creation d'un Scanner pour recuperer la saisie de l'utilisateur
     private static Scanner scan = new Scanner(System.in);
 
+    //Affichage de la presentation et des regles du Jeu
     private static String rulesCreation = String.join("\n",
             "----------------------------------------------------------------------------------------",
             "* Chaque personnage possède 5 caractéristiques :                                       *",
@@ -23,20 +25,26 @@ public class Main {
             "* Attention le total force + agilité + intelligence doit être égal au niveau du joueur.*",
             "----------------------------------------------------------------------------------------");
 
+    // Creation des personnages et affichage des regles
     public static void main(String[] args) {
 
-        // phase 1 : creation des personnages
         System.out.println("Bienvenue sur Magiworld");
         System.out.println(rulesCreation);
         Character joueur1 = createJoueurFromSaisie(1);
         Character joueur2 = createJoueurFromSaisie(2);
 
-        // phase 2 : creation du jeu
+        // creation du jeu
         Duel jeu = new Duel(joueur1, joueur2);
         jeu.start(scan);
-        // fin du bal on remballe
     }
 
+
+    /**
+     * Creation des joueurs et choix de leur classe
+     *
+     * @param numeroJoueur Attribution de numero de chaque joeur (1 et 2)
+     * @return joueur Renvoi la classe du joueur choisi
+     */
     private static Character createJoueurFromSaisie(int numeroJoueur) {
         System.out.println("Creation du personnage Joueur " + numeroJoueur);
         String name = "Joueur " + numeroJoueur;
