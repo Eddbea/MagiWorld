@@ -94,7 +94,7 @@ public class Main {
 
             if (scan.hasNextInt()) {
                 retour = scan.nextInt();
-                
+
             } else {
                 scan.next();
                 System.out.println("Erreur de saisie : entier uniquement");

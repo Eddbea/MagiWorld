@@ -8,29 +8,29 @@ public class Duel {
 
     Character[] joueurs = new Character[2];
 
-
+    //Lancement du duel
     public Duel(Character joueur1, Character joueur2) {
         this.joueurs[0] = joueur1;
         this.joueurs[1] = joueur2;
     }
 
     public void start(Scanner scan) {
-        // Presentation des persos
+        // Presentation des personnages
         Character joueur1 = joueurs[0];
         Character joueur2 = joueurs[1];
-
 
         System.out.println(joueur1.presentation());
         System.out.println("Versus");
         System.out.println(joueur2.presentation());
 
-        // Round de combat -- tant les perso sont vivants
+        // Round de combat -- tant les personnages sont vivants
         int roundCounter = 1;
         while (joueur1.isAlive() && joueur2.isAlive()) {
             System.out.println("Debut du round " + roundCounter);
             play(scan, joueur1, joueur2);
             play(scan, joueur2, joueur1);
-            // fin de round ; on affiche l'etat des perso.
+
+            // fin de round ; on affiche l'etat des personnages.
             System.out.println("Debut du round " + roundCounter);
             System.out.println("Joueur 1 : " + joueurs[0].toString());
             System.out.println("Joueur 2 : " + joueurs[1].toString());
@@ -42,9 +42,6 @@ public class Duel {
         if (joueur2.isAlive()) {
             System.out.println(joueur1.getName() + " a perdu");
         }
-
-
-
     }
 
     private void play(Scanner scan, Character currentPlayer, Character currentOpponnent) {
@@ -57,20 +54,20 @@ public class Duel {
         }
     }
 
+    //Attaque simple ou attaque speciale
     private void jouerAction(int actionDemandee, Character currentPlayer, Character currentOpponnent) {
-
         if (actionDemandee == 1) {
             currentPlayer.attaqueSimple(currentOpponnent);
         }
         if (actionDemandee == 2) {
             currentPlayer.attaqueSpeciale(currentOpponnent);
         }
-
     }
 
     /**
-     * @param scan
-     * @param currentPlayer
+     * Choix de l'attaque et controle de saisie correcte
+     * @param scan saisie de l'attaque 1 ou 2
+     * @param currentPlayer de l'attaque choisie
      * @return
      */
     public int actionDemandee(Scanner scan, Character currentPlayer) {

@@ -19,22 +19,24 @@ public abstract class Character {
     }
 
     /**
-     * @param level
-     * @param strength
-     * @param dexterity
-     * @param intelligence
-     * @return Un controle de la bonne saisie des parametres du joueur selon les regles du jeu.
+     * Controle de la bonne saisie des parametres du joueur selon les regles du jeu.
+     * @param level niveau du joueur
+     * @param strength force du joueur
+     * @param dexterity dexterite du joeur
+     * @param intellect intelligence du joueur
+     * @return Saisie correcte des parametres
      */
-    public static boolean checkBeforeCreate(int level, double strength, double dexterity, double intelligence) {
-        boolean goodLevelCoherence = (level == strength + dexterity + intelligence);
+    public static boolean checkBeforeCreate(int level, double strength, double dexterity, double intellect) {
+        boolean goodLevelCoherence = (level == strength + dexterity + intellect);
         boolean goodLevel = (level >= 1 && level <= 100);
         boolean goodStrength = (strength >= 0 && strength <= 100);
         boolean goodDex = (dexterity >= 0 && dexterity <= 100);
-        boolean goodInt = (intelligence >= 0 && intelligence <= 100);
+        boolean goodInt = (intellect >= 0 && intellect <= 100);
 
         return goodLevelCoherence && goodLevel && goodStrength && goodDex && goodInt;
     }
 
+    //Joueur en vie
     public boolean isAlive() {
         return this.life > 0;
     }
