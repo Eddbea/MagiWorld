@@ -38,7 +38,6 @@ public class Main {
         jeu.start(scan);
     }
 
-
     /**
      * Creation des joueurs et controle de bonne saisie
      * @param numeroJoueur Attribution de numero de chaque joueur (1 et 2)
@@ -101,7 +100,6 @@ public class Main {
             }
         }
         return retour;
-
     }
 
     /**
@@ -128,6 +126,5 @@ public class Main {
 
         }
         return retour;
-
     }
 }
