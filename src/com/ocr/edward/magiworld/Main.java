@@ -117,7 +117,7 @@ public class Main {
 
             if (scan.hasNextInt()) {
                 retour = scan.nextInt();
-                if (retour < 0 || retour > 3) {
+                if (retour <= 0 || retour > 3) {
                     System.out.println("Erreur de saisie : class entre 1 et 3");
                     retour = -1;
                 }
