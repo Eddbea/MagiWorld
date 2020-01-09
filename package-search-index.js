@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"com.ocr.edward.magiworld"},{"l":"com.ocr.edward.magiworld.jeu"},{"l":"com.ocr.edward.magiworld.personnage"}]

@@ -81,7 +81,6 @@ public class Main {
 
     /**
      * Controle de saisie correct d'un entier superieur a 0 pour le choix du personnage
-     *
      * @param label choix de la classe
      * @param scan  recuperation de la saisie
      * @return saisie
